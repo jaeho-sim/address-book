@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchAction } from '../../redux/actions/contact';
+import RenderComponents from '../RenderComponents';
 
 const ContactDetail = () => {
-  const { contacts } = useSelector(state => state.contact);
+  const { contact } = useSelector(state => state);
   const params = useParams();
   const dispatch = useDispatch();
 
@@ -13,7 +14,7 @@ const ContactDetail = () => {
   }, [dispatch]);
 
   const renderContactDetail = () => {
-    const user = contacts.find(item => item.login.username === params.username);
+    const user = contact.contacts.find(item => item.login.username === params.username);
     const { picture, name, location, email, phone, cell } = user;
     return (
       <div>
@@ -36,9 +37,9 @@ const ContactDetail = () => {
   }
 
   return (
-    <React.Fragment>
-      {contacts.length > 0 ? renderContactDetail() : renderNoContactFound()}
-    </React.Fragment>
+    <RenderComponents loading={contact.loading} error={contact.error}>
+      {contact.contacts.length > 0 ? renderContactDetail() : renderNoContactFound()}
+    </RenderComponents>
   )
 }
 

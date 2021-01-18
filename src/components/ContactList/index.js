@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchAction } from '../../redux/actions/contact';
+import RenderComponents from '../RenderComponents';
 
 const ContactList = () => {
-  const { contacts } = useSelector(state => state.contact);
+  const { contact } = useSelector(state => state);
   const dispatch = useDispatch();
   
 
@@ -13,7 +14,7 @@ const ContactList = () => {
   }, [dispatch]);
 
   const renderContactItems = () => {
-    return contacts.map(item => {
+    return contact.contacts.map(item => {
       return (
         <Link to={`/${item.login.username}`} key={item.login.username}>
           <li>
@@ -26,11 +27,11 @@ const ContactList = () => {
   }
 
   return (
-    <React.Fragment>
+    <RenderComponents loading={contact.loading} error={contact.error}>
       <ul>
         {renderContactItems()}
       </ul>
-    </React.Fragment>
+    </RenderComponents>
   );
 };
 
