@@ -1,13 +1,14 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import contactsMock from '../ContactList/mock_user_api.json';
+import { useSelector } from 'react-redux';
 
 const ContactDetail = () => {
+  const { contacts } = useSelector(state => state.contact);
   const params = useParams();
 
   const renderContactDetail = () => {
-    const contactInfo = contactsMock.results.find(item => item.login.username === params.username);
-    const { picture, name, location, email, phone, cell } = contactInfo;
+    const user = contacts.find(item => item.login.username === params.username);
+    const { picture, name, location, email, phone, cell } = user;
     return (
       <div>
         <img src={picture.large} alt={name.first} />
@@ -20,9 +21,17 @@ const ContactDetail = () => {
     )
   }
 
+  const renderNoContactFound = () => {
+    return (
+      <div>
+        <p>Contact not found - Invalid username: {params.username}</p>
+      </div>
+    )
+  }
+
   return (
     <React.Fragment>
-      {renderContactDetail()}
+      {contacts.length > 0 ? renderContactDetail() : renderNoContactFound()}
     </React.Fragment>
   )
 }
