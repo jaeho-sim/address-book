@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchAction } from '../../redux/actions/contact';
 
 const ContactDetail = () => {
   const { contacts } = useSelector(state => state.contact);
   const params = useParams();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAction());
+  }, [dispatch]);
 
   const renderContactDetail = () => {
     const user = contacts.find(item => item.login.username === params.username);
