@@ -21,9 +21,17 @@ const ContactDetail = () => {
     )
   }
 
+  const renderNoContactFound = () => {
+    return (
+      <div>
+        <p>Contact not found - Invalid username: {params.username}</p>
+      </div>
+    )
+  }
+
   return (
     <React.Fragment>
-      {renderContactDetail()}
+      {contacts.length > 0 ? renderContactDetail() : renderNoContactFound()}
     </React.Fragment>
   )
 }
