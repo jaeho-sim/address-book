@@ -1,9 +1,9 @@
 import { fetchContactData } from '../../helpers/api';
-import { SET, FETCH_FAIL, FETCH_LOADING } from '../../constants/actions';
+import { SET_CONTACT, FETCH_FAIL, FETCH_LOADING } from '../../constants/actions';
 
 export const setAction = (payload) => {
   return {
-    type: SET,
+    type: SET_CONTACT,
     payload
   }
 }

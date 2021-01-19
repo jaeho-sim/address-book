@@ -1,0 +1,28 @@
+.contact-detail-page {
+  text-align: center;
+
+  p {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .contact-detail {
+    box-shadow: 3px 4px 12px 4px #888888;
+    border-radius: 10px;
+    margin-top: 60px;
+    padding: 60px 0;
+  }
+
+  .detail-name {
+    font-weight: bold;
+    font-size: 22px;
+    margin-top: 30px;
+  }
+
+  .detail-location {
+    margin-top: 30px;
+  }
+
+  .contact-detail-home-link {
+    margin-top: 60px;
+  }
+}
