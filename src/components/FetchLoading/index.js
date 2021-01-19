@@ -1,7 +1,7 @@
 import React from 'react';
 
 const FetchLoading = () => {
-  return <p>Fetchin Loading...</p>
+  return <p>Fetch Loading...</p>
 }
 
 export default FetchLoading;
