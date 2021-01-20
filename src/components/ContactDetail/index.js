@@ -17,7 +17,7 @@ const ContactDetail = () => {
         const response = await fetchContactData();
         const findUser = response.results.find(item => '/' + item.login.username === window.location.pathname);
         if (findUser) setUser(findUser);
-        dispatch(setAction(response));
+        dispatch(setAction(response.contacts));
       } catch (err) {
         dispatch(setFailAction(err.message));
       }

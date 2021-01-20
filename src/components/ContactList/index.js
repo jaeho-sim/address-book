@@ -16,7 +16,7 @@ const ContactList = () => {
   }, [dispatch]);
 
   const renderContactItems = () => {
-    if (contact.contacts) {
+    if (contact && contact.contacts) {
       return contact.contacts.map(item => {
         return (
           <Link to={`/${item.login.username}`} key={item.login.username} className="contact-link">
