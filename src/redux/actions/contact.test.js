@@ -31,7 +31,7 @@ describe('actions', () => {
       fetchMock.restore();
     });
     it('should create a ssetAction when succeeded to fetch', () => {
-      fetchMock.getOnce('https://randomuser.me/api/?results=10&seed=fa68f06333af18b7', {
+      fetchMock.getOnce('https://randomuser.me/api/?results=20&seed=fa68f06333af18b7', {
         body: contactsMock,
         headers: { 'content-type': 'application/json' }
       });

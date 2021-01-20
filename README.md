@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# Address Book
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Nuvalence Interview Assessment built by Jaeho Sim
 
-## Available Scripts
+## Instruction
 
-In the project directory, you can run:
+1. Clone the repository: `https://github.com/jaeho-sim/address-book.git`
+2. Run `npm install` to install the packages
+3. Run `npm start` to run the app
+4. Open `http://localhost:3000` to view in the browser
+5. Run `npm test` to run test, and `npm run coverage` to see the test coverage
 
-### `yarn start`
+## Summary
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This simple app displays a list of random persons, and lets you to see the person's details when selected.\
+There are two different pages to navigate:
+1. **List** page (path: "/") - lists all the random persons fetched from the API endpoint
+2. **Detail** page (path: "/{username}) - shows selected person's detail
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Implementation
 
-### `yarn test`
+The React App was built by using **Hooks** for functional components.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Redux is used to store and share states between components. The API call is being made in both Redux Thunk (for List page) and inside the Detail page component to simply show the two different ways of calling.
 
-### `yarn build`
+The API endpoint used `https://randomuser.me/api/?results=20&seed=fa68f06333af18b7` has the seed parameter so that it always provide the same set of persons. This allows each individual's detail page to be accessible not only from the List page, but also by typing it directly in the browser address bar. When opened, the `username` parameter in the url is used to find the corresponding person from the API data.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+SCSS is used for UI implementation.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Given More Time...
 
-### `yarn eject`
+Given more time, first of all, I would like to connect the app to a permanent storage (i.e. local storage or cloud service) to persist contacts. After then, I would like to build a form that allows to add custom contacts, to make the app really function as an address book. Working on this would take about less than one working day, depending on how complex it is to set up the storage at the beginning.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Further more, there are several features can be implemented in the list page: filtering, sorting, and pagination. All these implementation can be done by using Redux, thus they will only take a few hours to build them all.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To make the app more robust, I would've added more error handlers that could catch any type of error.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+If you have any question, please send email to jaeho.asdf@mgail.com

@@ -38,7 +38,7 @@ describe('ContactDetail component', () => {
     dummyDispatch = jest.fn();
     useSelectorSpy.mockReturnValue(dummySelector);
     useDispatchSpy.mockReturnValue(dummyDispatch);
-    fetchMock.getOnce('https://randomuser.me/api/?results=10&seed=fa68f06333af18b7', {
+    fetchMock.getOnce('https://randomuser.me/api/?results=20&seed=fa68f06333af18b7', {
       body: contactsMock,
       headers: { 'content-type': 'application/json' }
     });
