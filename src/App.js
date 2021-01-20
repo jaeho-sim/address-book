@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import ContactList from './components/ContactList';
 import ContactDetail from './components/ContactDetail';
 import { HOME, DETAIL } from './constants/routes';

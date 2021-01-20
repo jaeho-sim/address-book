@@ -1,24 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchAction } from '../../redux/actions/contact';
+import { useSelector, useDispatch } from 'react-redux';
+import { setAction, setFailAction } from '../../redux/actions/contact';
 import { setPageNameAction } from '../../redux/actions/page';
 import RenderComponents from '../RenderComponents';
+import { fetchContactData } from '../../helpers/api';
 import './index.scss';
 
 const ContactDetail = () => {
   const [user, setUser] = useState(undefined);
   const { contact } = useSelector(state => state);
-  const params = useParams();
   const dispatch = useDispatch();
-
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetchContactData();
+        const findUser = response.results.find(item => '/' + item.login.username === window.location.pathname);
+        if (findUser) setUser(findUser);
+        dispatch(setAction(response));
+      } catch (err) {
+        dispatch(setFailAction(err.message));
+      }
+    }
+    fetchData();
     dispatch(setPageNameAction('Detail'));
-    dispatch(fetchAction());
-    const findUser = contact.contacts.find(item => item.login.username === params.username);
-    if (findUser) setUser(findUser);
-  }, [dispatch, contact.contacts, params.username]);
+  }, [dispatch]);
 
   const renderContactDetail = () => {
     const { picture, name, location, email, phone } = user;
@@ -35,15 +41,15 @@ const ContactDetail = () => {
 
   const renderNoContactFound = () => {
     return (
-      <div>
-        <p>Contact not found - Invalid username: {params.username}</p>
+      <div className="contact-not-found">
+        <p>Contact not found - Invalid username</p>
       </div>
     )
   }
 
   return (
     <div className="contact-detail-page">
-      <RenderComponents loading={contact.loading} error={contact.error}>
+      <RenderComponents error={contact && contact.error}>
         {user ? renderContactDetail() : renderNoContactFound()}
       </RenderComponents>
       <div className="contact-detail-home-link">

@@ -16,21 +16,23 @@ const ContactList = () => {
   }, [dispatch]);
 
   const renderContactItems = () => {
-    return contact.contacts.map(item => {
-      return (
-        <Link to={`/${item.login.username}`} key={item.login.username} className="contact-link">
-          <div className="contact-list-item">
-            <img src={item.picture.thumbnail} alt={item.name.first} />
-            <span className="contact-name">{item.name.first} {item.name.last}</span>
-          </div>
-        </Link>
-      );
-    });
+    if (contact.contacts) {
+      return contact.contacts.map(item => {
+        return (
+          <Link to={`/${item.login.username}`} key={item.login.username} className="contact-link">
+            <div className="contact-list-item">
+              <img src={item.picture.thumbnail} alt={item.name.first} />
+              <span className="contact-name">{item.name.first} {item.name.last}</span>
+            </div>
+          </Link>
+        );
+      });
+    }
   }
 
   return (
     <div className="contact-list-page">
-      <RenderComponents loading={contact.loading} error={contact.error}>
+      <RenderComponents error={contact && contact.error}>
         <div className="contact-list">
           {renderContactItems()}
         </div>
