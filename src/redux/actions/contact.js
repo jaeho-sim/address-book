@@ -1,5 +1,5 @@
 import { fetchContactData } from '../../helpers/api';
-import { SET_CONTACT, FETCH_FAIL, FETCH_LOADING } from '../../constants/actions';
+import { SET_CONTACT, FETCH_FAIL } from '../../constants/actions';
 
 export const setAction = (payload) => {
   return {
@@ -15,15 +15,8 @@ export const setFailAction = (payload) => {
   }
 }
 
-export const setLoadingAction = () => {
-  return {
-    type: FETCH_LOADING
-  }
-}
-
 export const fetchAction = () => {
   return async (dispatch) => {
-    dispatch(setLoadingAction);
     try {
       const response = await fetchContactData();
       dispatch(setAction(response.results));
