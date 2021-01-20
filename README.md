@@ -15,7 +15,7 @@ Nuvalence Interview Assessment built by Jaeho Sim
 This simple app displays a list of random persons, and lets you to see the person's details when selected.\
 There are two different pages to navigate:
 1. **List** page (path: "/") - lists all the random persons fetched from the API endpoint
-2. **Detail** page (path: "/{username}) - shows selected person's detail
+2. **Detail** page (path: "/{username}") - shows selected person's detail
 
 ### Implementation
 
