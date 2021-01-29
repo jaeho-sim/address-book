@@ -38,4 +38,4 @@ To make the app more robust, I would've added more error handlers that could cat
 
 
 ---
-If you have any question, please send email to jaeho.asdf@mgail.com
+If you have any question, please send email to jaeho.asdf@gmail.com
